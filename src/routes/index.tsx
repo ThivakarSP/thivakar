@@ -450,10 +450,7 @@ function Hero() {
               <div className="absolute -inset-4 rounded-2xl bg-gold/10 blur-2xl" />
               <div className="relative aspect-[4/5] w-[260px] overflow-hidden rounded-xl border border-gold/20 md:w-[300px]">
                 <img
-                  src="/src/assets/portrait.jpg"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                  }}
+                  src={portraitImg}
                   alt="S.P. Thivakar"
                   className="h-full w-full object-cover"
                 />
