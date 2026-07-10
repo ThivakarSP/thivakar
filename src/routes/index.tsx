@@ -47,10 +47,10 @@ export const Route = createFileRoute("/")({
         content:
           "S.P. Thivakar — Backend & Java developer from Coimbatore. Building scalable software, solving 350+ DSA problems, open to SDE internships and full-time roles.",
       },
-      { property: "og:title", content: "S.P. Thivakar — Software Engineer" },
+      { property: "og:title", content: "S.P. Thivakar — Software Engineer & Backend Developer" },
       {
         property: "og:description",
-        content: "Backend & Java Developer • 350+ DSA solved • Open to SDE roles.",
+        content: "S.P. Thivakar — Backend & Java developer from Coimbatore. Building scalable software, solving 350+ DSA problems, open to SDE internships and full-time roles.",
       },
       { property: "og:url", content: "/" },
     ],

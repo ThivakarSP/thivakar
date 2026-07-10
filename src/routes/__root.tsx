@@ -74,16 +74,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Portfolio of S.P. Thivakar — Software Engineer, Backend & Java Developer. Building scalable, elegant software.",
+          "S.P. Thivakar — Backend & Java developer from Coimbatore. Building scalable software, solving 350+ DSA problems, open to SDE internships and full-time roles.",
       },
       { name: "author", content: "S.P. Thivakar" },
-      { property: "og:title", content: "S.P. Thivakar — Software Engineer" },
+      { property: "og:title", content: "S.P. Thivakar — Software Engineer & Backend Developer" },
       {
         property: "og:description",
-        content: "Backend & Java Developer building scalable software.",
+        content: "S.P. Thivakar — Backend & Java developer from Coimbatore. Building scalable software, solving 350+ DSA problems, open to SDE internships and full-time roles.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "S.P. Thivakar — Software Engineer & Backend Developer" },
+      { name: "twitter:description", content: "S.P. Thivakar — Backend & Java developer from Coimbatore. Building scalable software, solving 350+ DSA problems, open to SDE internships and full-time roles." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/91cd20a3-6f14-4711-b538-b2c3e46b5070/id-preview-c42ccee7--5331fb0b-0e18-4546-a98c-948ee1ef9687.lovable.app-1783678386677.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/91cd20a3-6f14-4711-b538-b2c3e46b5070/id-preview-c42ccee7--5331fb0b-0e18-4546-a98c-948ee1ef9687.lovable.app-1783678386677.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
