@@ -1004,11 +1004,39 @@ function Experience() {
 function Contact() {
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const copy = async () => {
     await navigator.clipboard.writeText("hello.thivakar@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+    try {
+      await emailjs.send(
+        "service_h0qv0d8",
+        "template_nn1bwva",
+        {
+          from_name: form.name,
+          from_email: form.email,
+          subject: form.subject || "Hello from your portfolio",
+          message: form.message,
+          reply_to: form.email,
+        },
+        { publicKey: "zxuVz1XN5iRR2ejz" },
+      );
+      setStatus("sent");
+      setForm({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (err: unknown) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Failed to send. Try again.");
+    }
   };
 
   return (
@@ -1021,13 +1049,7 @@ function Contact() {
 
         <div className="mt-14 grid gap-10 lg:grid-cols-2">
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const body = `Hi Thivakar,%0D%0A%0D%0A${form.message}%0D%0A%0D%0A— ${form.name}`;
-              window.location.href = `mailto:hello.thivakar@gmail.com?subject=${encodeURIComponent(
-                form.subject || "Hello from your portfolio",
-              )}&body=${body}`;
-            }}
+            onSubmit={onSubmit}
             className="space-y-4 rounded-xl border border-border bg-card/40 p-6 md:p-8"
           >
             <div className="grid gap-4 md:grid-cols-2">
@@ -1062,10 +1084,22 @@ function Contact() {
             </div>
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.01]"
+              disabled={status === "sending"}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.01] disabled:opacity-60"
             >
-              Send Message <ArrowUpRight className="h-4 w-4" />
+              {status === "sending"
+                ? "Sending…"
+                : status === "sent"
+                  ? "Message sent ✓"
+                  : "Send Message"}
+              {status === "idle" && <ArrowUpRight className="h-4 w-4" />}
             </button>
+            {status === "error" && (
+              <p className="text-xs text-red-400">{errorMsg}</p>
+            )}
+            {status === "sent" && (
+              <p className="text-xs text-gold">Thanks — I'll get back to you soon.</p>
+            )}
           </form>
 
           <div className="space-y-4">
