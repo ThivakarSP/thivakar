@@ -1028,7 +1028,7 @@ function Contact() {
           message: form.message,
           reply_to: form.email,
         },
-        { publicKey: "zxuVz1XN5iRR2ejz" },
+        { publicKey: "-zxuVz1XN5iRR2ejz" },
       );
       setStatus("sent");
       setForm({ name: "", email: "", subject: "", message: "" });
