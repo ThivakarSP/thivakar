@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import portraitImg from "@/assets/portrait.jpg";
+import resumePdf from "@/assets/Thivakar_Resume.pdf.asset.json";
 import {
   motion,
   useMotionValue,
@@ -363,7 +364,8 @@ function Nav() {
           </nav>
           <div className="flex items-center gap-3">
             <a
-              href="/resume.pdf"
+              href={resumePdf.url}
+              download="Thivakar_Resume.pdf"
               className="hidden items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-xs font-medium text-gold transition-all hover:bg-gold hover:text-primary-foreground md:inline-flex"
             >
               <Download className="h-3.5 w-3.5" /> Resume
@@ -533,7 +535,7 @@ function Hero() {
                 <MagneticButton href="#projects" variant="primary">
                   View Projects <ArrowUpRight className="h-4 w-4" />
                 </MagneticButton>
-                <MagneticButton href="/resume.pdf" variant="ghost">
+                <MagneticButton href={resumePdf.url} download="Thivakar_Resume.pdf" variant="ghost">
                   Download Resume <Download className="h-4 w-4" />
                 </MagneticButton>
               </div>
@@ -581,10 +583,12 @@ function SocialIcon({
 
 function MagneticButton({
   href,
+  download,
   children,
   variant = "primary",
 }: {
   href: string;
+  download?: string | boolean;
   children: React.ReactNode;
   variant?: "primary" | "ghost";
 }) {
@@ -598,6 +602,7 @@ function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
+      download={download}
       style={{ x: sx, y: sy }}
       onMouseMove={(e) => {
         const r = ref.current!.getBoundingClientRect();
