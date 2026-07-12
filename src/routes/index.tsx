@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import portraitImg from "@/assets/portrait.jpg";
+import resumePdf from "@/assets/Thivakar_Resume.pdf.asset.json";
 import {
   motion,
   useMotionValue,
