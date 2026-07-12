@@ -535,7 +535,7 @@ function Hero() {
                 <MagneticButton href="#projects" variant="primary">
                   View Projects <ArrowUpRight className="h-4 w-4" />
                 </MagneticButton>
-                <MagneticButton href="/resume.pdf" variant="ghost">
+                <MagneticButton href={resumePdf.url} download="Thivakar_Resume.pdf" variant="ghost">
                   Download Resume <Download className="h-4 w-4" />
                 </MagneticButton>
               </div>
