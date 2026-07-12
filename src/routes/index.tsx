@@ -583,10 +583,12 @@ function SocialIcon({
 
 function MagneticButton({
   href,
+  download,
   children,
   variant = "primary",
 }: {
   href: string;
+  download?: string | boolean;
   children: React.ReactNode;
   variant?: "primary" | "ghost";
 }) {
@@ -600,6 +602,7 @@ function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
+      download={download}
       style={{ x: sx, y: sy }}
       onMouseMove={(e) => {
         const r = ref.current!.getBoundingClientRect();
