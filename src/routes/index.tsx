@@ -364,7 +364,8 @@ function Nav() {
           </nav>
           <div className="flex items-center gap-3">
             <a
-              href="/resume.pdf"
+              href={resumePdf.url}
+              download="Thivakar_Resume.pdf"
               className="hidden items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-xs font-medium text-gold transition-all hover:bg-gold hover:text-primary-foreground md:inline-flex"
             >
               <Download className="h-3.5 w-3.5" /> Resume
