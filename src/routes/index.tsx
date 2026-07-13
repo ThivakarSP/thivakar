@@ -1139,18 +1139,6 @@ function Contact() {
           </div>
         </div>
 
-        {/* Big word */}
-        <div className="mt-32 border-t border-border pt-20 text-center">
-          <div className="grid grid-cols-4 gap-4 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            <span>A</span>
-            <span>Portfolio</span>
-            <span>For</span>
-            <span>Great Teams</span>
-          </div>
-          <h2 className="mt-6 font-display text-[18vw] font-bold leading-none text-gold md:text-[10rem]">
-            THIVAKAR
-          </h2>
-        </div>
       </div>
     </section>
   );
