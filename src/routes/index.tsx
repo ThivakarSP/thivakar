@@ -264,15 +264,21 @@ function SpotlightText({
   radius?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [pos, setPos] = useState({ x: -9999, y: -9999 });
 
   const handleMove = (e: React.MouseEvent<HTMLSpanElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--spotlight-x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--spotlight-y", `${e.clientY - rect.top}px`);
   };
 
-  const handleLeave = () => setPos({ x: -9999, y: -9999 });
+  const handleLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.setProperty("--spotlight-x", "-9999px");
+    el.style.setProperty("--spotlight-y", "-9999px");
+  };
 
   return (
     <span
@@ -282,8 +288,6 @@ function SpotlightText({
       className={`spotlight-text ${className}`}
       style={
         {
-          "--spotlight-x": `${pos.x}px`,
-          "--spotlight-y": `${pos.y}px`,
           "--spotlight-radius": `${radius}px`,
           "--spotlight-base": base,
           "--spotlight-glow": glow,
