@@ -248,6 +248,53 @@ function Loader() {
   );
 }
 
+// ---------- Spotlight text (cursor proximity color change) ----------
+
+function SpotlightText({
+  children,
+  className = "",
+  base = "var(--muted-foreground)",
+  glow = "var(--gold)",
+  radius = 140,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  base?: string;
+  glow?: string;
+  radius?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [pos, setPos] = useState({ x: -9999, y: -9999 });
+
+  const handleMove = (e: React.MouseEvent<HTMLSpanElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const handleLeave = () => setPos({ x: -9999, y: -9999 });
+
+  return (
+    <span
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      className={`spotlight-text ${className}`}
+      style={
+        {
+          "--spotlight-x": `${pos.x}px`,
+          "--spotlight-y": `${pos.y}px`,
+          "--spotlight-radius": `${radius}px`,
+          "--spotlight-base": base,
+          "--spotlight-glow": glow,
+        } as React.CSSProperties
+      }
+    >
+      {children}
+    </span>
+  );
+}
+
 // ---------- Background ----------
 
 function BackgroundFX() {
