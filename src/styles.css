@@ -97,6 +97,17 @@
   background-color: var(--gold);
 }
 
+@utility spotlight-text {
+  color: transparent;
+  background-image: radial-gradient(
+    circle var(--spotlight-radius, 140px) at var(--spotlight-x, -9999px) var(--spotlight-y, -9999px),
+    var(--spotlight-glow, var(--gold)) 0%,
+    var(--spotlight-base, var(--muted-foreground)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 @utility grain {
   position: relative;
 }

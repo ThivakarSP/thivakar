@@ -248,6 +248,57 @@ function Loader() {
   );
 }
 
+// ---------- Spotlight text (cursor proximity color change) ----------
+
+function SpotlightText({
+  children,
+  className = "",
+  base = "var(--muted-foreground)",
+  glow = "var(--gold)",
+  radius = 140,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  base?: string;
+  glow?: string;
+  radius?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const handleMove = (e: React.MouseEvent<HTMLSpanElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--spotlight-x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--spotlight-y", `${e.clientY - rect.top}px`);
+  };
+
+  const handleLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.setProperty("--spotlight-x", "-9999px");
+    el.style.setProperty("--spotlight-y", "-9999px");
+  };
+
+  return (
+    <span
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      className={`spotlight-text ${className}`}
+      style={
+        {
+          "--spotlight-radius": `${radius}px`,
+          "--spotlight-base": base,
+          "--spotlight-glow": glow,
+        } as React.CSSProperties
+      }
+    >
+      {children}
+    </span>
+  );
+}
+
 // ---------- Background ----------
 
 function BackgroundFX() {
@@ -437,9 +488,9 @@ function Hero() {
             >
               Hi, I'm
             </motion.p>
-            <h1 className="mt-3 font-display text-6xl font-bold leading-[0.95] text-gold md:text-7xl lg:text-8xl">
-              Strategy
-              <span className="block text-foreground">Meets</span>
+            <h1 className="mt-3 font-display text-6xl font-bold leading-[0.95] md:text-7xl lg:text-8xl">
+              <SpotlightText className="block" base="var(--foreground)">Strategy</SpotlightText>
+              <SpotlightText className="block" base="var(--foreground)">Meets</SpotlightText>
             </h1>
           </div>
 
@@ -464,8 +515,8 @@ function Hero() {
 
           <div className="order-3 text-right">
             <h1 className="font-display text-6xl font-bold leading-[0.95] md:text-7xl lg:text-8xl">
-              <span className="block text-foreground">Software</span>
-              <span className="block text-gold">Engineer</span>
+              <SpotlightText className="block text-right" base="var(--foreground)">Software</SpotlightText>
+              <SpotlightText className="block text-right" base="var(--foreground)">Engineer</SpotlightText>
             </h1>
           </div>
         </div>
