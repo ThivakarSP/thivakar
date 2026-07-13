@@ -484,9 +484,9 @@ function Hero() {
             >
               Hi, I'm
             </motion.p>
-            <h1 className="mt-3 font-display text-6xl font-bold leading-[0.95] text-gold md:text-7xl lg:text-8xl">
-              Strategy
-              <span className="block text-foreground">Meets</span>
+            <h1 className="mt-3 font-display text-6xl font-bold leading-[0.95] md:text-7xl lg:text-8xl">
+              <SpotlightText className="block">Strategy</SpotlightText>
+              <SpotlightText className="block">Meets</SpotlightText>
             </h1>
           </div>
 
@@ -511,8 +511,8 @@ function Hero() {
 
           <div className="order-3 text-right">
             <h1 className="font-display text-6xl font-bold leading-[0.95] md:text-7xl lg:text-8xl">
-              <span className="block text-foreground">Software</span>
-              <span className="block text-gold">Engineer</span>
+              <SpotlightText className="block text-right">Software</SpotlightText>
+              <SpotlightText className="block text-right">Engineer</SpotlightText>
             </h1>
           </div>
         </div>
