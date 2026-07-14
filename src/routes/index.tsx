@@ -479,7 +479,7 @@ function Hero() {
   return (
     <section id="home" className="relative min-h-screen px-6 pt-32 md:pt-36">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-center">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div className="order-2 md:order-1">
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -491,33 +491,29 @@ function Hero() {
             <h1 className="mt-3 font-display text-6xl font-bold leading-[0.95] md:text-7xl lg:text-8xl">
               <SpotlightText className="block" base="var(--foreground)">Strategy</SpotlightText>
               <SpotlightText className="block" base="var(--foreground)">Meets</SpotlightText>
+              <SpotlightText className="block" base="var(--foreground)">Software</SpotlightText>
+              <SpotlightText className="block text-gold" base="var(--gold, #d4af37)">Engineer.</SpotlightText>
             </h1>
           </div>
 
-          <div className="order-1 mx-auto md:order-2">
+          <div className="order-1 md:order-2">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7 }}
-              className="relative"
+              className="relative mx-auto w-full max-w-[520px]"
             >
-              <div className="absolute -inset-4 rounded-2xl bg-gold/10 blur-2xl" />
-              <div className="relative aspect-[4/5] w-[260px] overflow-hidden rounded-xl border border-gold/20 md:w-[300px]">
+              <div className="absolute -inset-6 rounded-[2rem] bg-gold/10 blur-3xl" />
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem]">
                 <img
                   src={portraitImg}
                   alt="S.P. Thivakar"
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/40 md:to-background/20" />
               </div>
             </motion.div>
-          </div>
-
-          <div className="order-3 text-right">
-            <h1 className="font-display text-6xl font-bold leading-[0.95] md:text-7xl lg:text-8xl">
-              <SpotlightText className="block text-right" base="var(--foreground)">Software</SpotlightText>
-              <SpotlightText className="block text-right" base="var(--foreground)">Engineer</SpotlightText>
-            </h1>
           </div>
         </div>
 
