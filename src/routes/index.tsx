@@ -498,20 +498,25 @@ function Hero() {
 
           <div className="order-1 md:order-2">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              className="relative mx-auto w-full max-w-[520px]"
+              transition={{ duration: 0.9 }}
+              className="relative mx-auto w-full max-w-[560px]"
             >
-              <div className="absolute -inset-6 rounded-[2rem] bg-gold/10 blur-3xl" />
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem]">
+              <div
+                className="relative aspect-[4/5] w-full"
+                style={{
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse 75% 85% at 55% 45%, #000 40%, rgba(0,0,0,0.7) 65%, transparent 92%)",
+                  maskImage:
+                    "radial-gradient(ellipse 75% 85% at 55% 45%, #000 40%, rgba(0,0,0,0.7) 65%, transparent 92%)",
+                }}
+              >
                 <img
                   src={portraitImg}
                   alt="S.P. Thivakar"
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/40 md:to-background/20" />
               </div>
             </motion.div>
           </div>
